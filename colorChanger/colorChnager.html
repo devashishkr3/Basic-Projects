@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height:100vh;
+        }
+
+        h1{
+            margin-bottom: 20px;
+        }
+
+        button{
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover{
+            opacity:0.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Background Color Changer</h1>
+    <button onclick="changeColor()">Change Color</button>
+
+    <script>
+        function changeColor(){
+            let random = Math.floor(Math.random() * 16777215);
+            // random color generate
+            const randomColor = "#" +  random.toString();
+            console.log(randomColor);
+
+            let body = document.querySelector("body");
+            body.style.backgroundColor = randomColor;
+        }
+
+        // #283783
+        // rgb(0-255,0-255,0-255)
+        console.log(256*256*256);
+        // console.log(randomColor);
+        
+        
+    </script>
+</body>
+</html>
