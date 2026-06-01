@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Carousel</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel {
+            text-align: center;
+        }
+
+        img {
+            width: 600px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: royalblue;
+            color: white;
+            border-radius: 5px;
+            margin: 0 10px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="carousel">
+
+        <img id="slider" src="https://picsum.photos/id/1015/600/350" alt="image">
+
+        <div class="buttons">
+            <button id="prevBtn"><</button>
+            <button id="nextBtn">></button>
+        </div>
+
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
+
+        const images = [
+            "https://picsum.photos/id/1015/600/350",//0
+            "https://picsum.photos/id/1016/600/350",//1
+            "https://picsum.photos/id/1018/600/350",//2
+            "https://picsum.photos/id/1020/600/350",//3
+            "https://picsum.photos/id/1024/600/350",//4
+        ];
+
+        let currentIndex = 0;
+
+        function showImage() {
+            slider.src = images[currentIndex];
+        }
+
+        nextBtn.addEventListener("click", () => {
+            currentIndex++;
+
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+
+            showImage();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            showImage();
+        });
+    </script>
+</body>
+
+</html>
