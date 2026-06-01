@@ -39,10 +39,16 @@
 
     <script>
         function changeColor(){
-            let random = Math.floor(Math.random() * 16777215);
+            // let random = Math.floor(Math.random() * 16777215);
             // random color generate
-            const randomColor = "#" +  random.toString();
-            console.log(randomColor);
+            // const randomColor = "#" +  random.toString();
+            // console.log(randomColor);
+
+            let random1 = Math.floor(Math.random() * 256);
+            let random2 = Math.floor(Math.random() * 256);
+            let random3 = Math.floor(Math.random() * 256);
+            let randomColor = `rgb(${random1},${random2},${random3})`;
+
 
             let body = document.querySelector("body");
             body.style.backgroundColor = randomColor;
@@ -52,6 +58,7 @@
         // rgb(0-255,0-255,0-255)
         console.log(256*256*256);
         // console.log(randomColor);
+        
         
         
     </script>
