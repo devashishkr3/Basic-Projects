@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel {
+            position: relative;
+            width: 600px;
+        }
+
+        #slider {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 30px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .left {
+            left: 10px;
+        }
+
+        .right {
+            right: 10px;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: gray;
+        }
+
+        .dot.active {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+
+        <button class="arrow left" id="prevBtn">
+            &#10094;
+        </button>
+
+        <img id="slider" src="https://picsum.photos/id/1015/600/350" alt="">
+
+        <button class="arrow right" id="nextBtn">
+            &#10095;
+        </button>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider");
+
+        const images = [
+            "https://picsum.photos/id/1016/600/350",
+            "https://picsum.photos/id/1018/600/350",
+            "https://picsum.photos/id/1020/600/350"
+        ];
+
+        const dots = document.querySelectorAll(".dot");
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+
+            slider.src = images[currentIndex];
+
+            dots.forEach(dot => {
+                dot.classList.remove("active");
+            });
+
+            dots[currentIndex].classList.add("active");
+        }
+
+        document.getElementById("nextBtn")
+            .addEventListener("click", () => {
+
+                currentIndex++;
+
+                if (currentIndex >= images.length) {
+                    currentIndex = 0;
+                }
+
+                updateCarousel();
+            });
+
+        document.getElementById("prevBtn")
+            .addEventListener("click", () => {
+
+                currentIndex--;
+
+                if (currentIndex < 0) {
+                    currentIndex = images.length - 1;
+                }
+
+                updateCarousel();
+            });
+
+        dots.forEach((dot, index) => {
+
+            dot.addEventListener("click", () => {
+
+                currentIndex = index;
+
+                updateCarousel();
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>
